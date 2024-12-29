@@ -1,0 +1,17 @@
+﻿class Solution { //BS-10, OPTIMAL USING BINARY SERACH,,t-o(LOG N),s-o(1)
+public:  // runtime error: signed integer overflow: 1073697800 * 1073
+    int mySqrt(int x) {
+        int low=1, high = x;
+        while(low <= high){
+            long long mid = low + (high-low) / 2; // Prevent potential overflow in (low + high)
+
+            long long val = (long long)mid * mid; //prevent multiplication overflow
+
+            if(val <= x) {
+                low = mid + 1;
+            }
+            else high = mid - 1;
+        }
+        return high;
+    }
+};
